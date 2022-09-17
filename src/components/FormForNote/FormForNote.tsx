@@ -1,14 +1,16 @@
-import React from 'react'
+import FormForNoteForm from "./FormForNoteForm"
 
-import './Row.scss'
+const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+  // Preventing the page from reloading
+  event.preventDefault();
+  console.log('onSubmitForm')
+  // Do something 
+}
 
-
-const Row = () => {
+const FormForNote = () => {
   return (
-    <div className={``} >
-     
-    </div>
+    <FormForNoteForm onSubmit={submitForm} setTerm={() => {''}} />
   )
 }
 
-export default Row 
+export default FormForNote

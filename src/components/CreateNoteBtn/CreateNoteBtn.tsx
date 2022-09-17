@@ -1,20 +1,17 @@
 import React from 'react'
+import Button from '../Button'
+import './CreateNoteBtn.scss'
 
-import './TableMainRow.scss'
-import TableMainRowForm from './TableMainRowForm'
+const createNoteHandler = (event: React.MouseEvent<HTMLElement>) => {
+  event.preventDefault()
+  console.log(event.target);
+  console.log('handleDelete');
+};
 
-
-const TableMainRow = () => {
+const CreateNoteBtn = () => {
   return (
-    <div className={``} >
-      <TableMainRowForm name='something' 
-      createAt={111 }
-      category='something' 
-      content='something' 
-      dates='232345r' 
-      id='fdgdf' />
-    </div>
+    <Button name='Create-note' className='create-note-btn' onClick ={ createNoteHandler } />
   )
 }
 
-export default TableMainRow
+export default CreateNoteBtn

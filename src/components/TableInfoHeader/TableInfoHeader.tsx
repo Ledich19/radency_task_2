@@ -1,5 +1,3 @@
-import { BiTrash } from "react-icons/bi";
-import { BiArchiveIn } from "react-icons/bi";
 import './TableInfoHeader.scss'
 
 const TableInfoHeader = () => {
