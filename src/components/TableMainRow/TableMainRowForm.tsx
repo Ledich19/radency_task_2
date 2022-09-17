@@ -5,37 +5,26 @@ import { BiHighlight } from "react-icons/bi";
 
 interface TableMainRowProps {
   name: string;
-  createAt: number;
+  createAt: string;
   category: string;
   content: string;
-  dates: string;
+  date: string;
   id: string;
+  lastDate: string;
+  handleDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleUpdate: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleArchive: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const TableMainRowForm = ({ name, createAt, category, content, dates, id }: TableMainRowProps) => {
-  const handleDelete = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault()
-    console.log(event.target);
-    console.log('handleDelete');
-  };
-  const handleUpdate = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault()
-    console.log(event.target);
-    console.log('handleUpdate');
-  };
-  const handleArchive= (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault()
-    console.log(event.target);
-    console.log('handleArchive');
-  };
-
+const TableMainRowForm = ({lastDate, name, createAt, category, content, date, handleDelete,handleUpdate,handleArchive }: TableMainRowProps) => {
+  
   return (
     <div className={`table-main__row row`} >
       <div className="table-main__name">{name}</div>
       <div className="table-main__created">{createAt}</div>
       <div className="table-main__category">{category}</div>
       <div className="table-main__content">{content}</div>
-      <div className="table-main__dates">{dates}</div>
+      <div title={lastDate} className="table-main__dates">{date}</div>
       <div className="table-main__buttons">
         <button onClick = {handleDelete}
           title='Update'

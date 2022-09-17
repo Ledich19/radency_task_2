@@ -1,14 +1,16 @@
 import React from 'react'
 
-import './Row.scss'
+import './Table.scss'
+type Props = {
+  children?: React.ReactNode;
+};
 
-
-const Row = () => {
+const Table = ({children}: Props ) => {
   return (
     <div className={``} >
-      
+      {children}
     </div>
   )
 }
 
-export default Row 
+export default Table 

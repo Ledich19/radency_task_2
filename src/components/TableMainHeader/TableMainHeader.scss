@@ -1,8 +1,25 @@
 .table-head {
   font-size: 1.2rem;
   font-weight: bold;
+  &__name{
+    width: 13%;
+  }
+  &__created{
+    width: 12%;
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    width: 25%;
+  }
+
+  &__dates {
+    width: 15%;
+  }
   &__buttons {
+    width: 85px;
     display: flex;
+    justify-content: end;
     flex-wrap: nowrap;
     & button{
       font-size: 1rem;
