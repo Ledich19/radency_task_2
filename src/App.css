@@ -1,10 +1,37 @@
-.App {
-  text-align: center;
+
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 16px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+.App {
+  text-align: center;
+  width: 100%;
+}
+.App__container {
+  max-width: 1310px;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,14 +40,6 @@
   }
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
 
 .App-link {
   color: rgb(112, 76, 182);

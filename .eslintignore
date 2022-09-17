@@ -1,0 +1,9 @@
+node_modules
+build
+.eslintrc.js
+
+src\app\store.ts
+src\app\hooks.ts
+
+counterAPI.ts
+counterSlice.ts
