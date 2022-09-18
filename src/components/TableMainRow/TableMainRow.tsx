@@ -6,20 +6,17 @@ interface TableMainRowProps {
     createAt: string;
     category: string;
     content: string;
-    date: string[];
     id: string;
   };
 }
 
 const TableMainRow = ({ note }: TableMainRowProps) => {
-
-
-  const dates = note.date.map((d) => {
-    const date = new Date(d)
-    return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
-  } )
-  const date = dates.join()
-  const lastDate = dates[dates.length - 1]
+  const regex = /(0?[1-9]|[12][0-9]|3[01])[/\-.](0?[1-9]|1[012])[/\-.]\d{4}|\d{4}[/\-.](0?[1-9]|[12][0-9]|3[01])[/\-.](0?[1-9]|1[012])/g
+  const dates = note.content.match(regex)
+  console.log('dated',dates);
+  const date = dates ? dates.join() : ''
+  const lastDate = dates ? dates[dates.length - 1] : ''
+  
   const createAt = new Date(note.createAt).toLocaleString('en-US', { year: 'numeric',month: 'short',day: 'numeric',})
 
   const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {

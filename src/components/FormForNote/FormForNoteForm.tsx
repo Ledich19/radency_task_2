@@ -17,10 +17,6 @@ const FormForNoteForm = ({ onSubmit, setTerm }: FormProps) => {
           <option value='Idea'>Idea</option>
           <option value='Task'>Task</option>
         </select>
-
-        <span>Date: </span>
-        <input onChange={(e) => setTerm(e.target.value)} type='date' id='note-form-date' name='date' />
-
         <span>Note: </span>
         <textarea onChange={(e) => setTerm(e.target.value)} name='content' id='note-form-content'></textarea>
 

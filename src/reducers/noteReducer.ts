@@ -7,7 +7,6 @@ interface Note {
   createAt: string;
   category: string;
   content: string;
-  date: string[];
   isArchive: boolean;
  }
 // Define a type for the slice state
@@ -24,11 +23,7 @@ const initialState: NotesState = {
       "name": "Dianna Rose",
       "createAt": "2022-06-11T09:38:49",
       "category": "Random Thought",
-      "content": "Consequat pariatur ullamco velit est deserunt reprehenderit sit irure magna.",
-      "date": [
-        "2018-06-09",
-        "2020-01-17"
-      ],
+      "content": "Consequat pariatur 2018-06-09 ullamco velit est deserunt 2020.01.17 reprehenderit sit irure magna.",
       "isArchive": true
     },
     {
@@ -36,10 +31,7 @@ const initialState: NotesState = {
       "name": "Catalina Horton",
       "createAt": "2015-07-27T10:52:10",
       "category": "Random Thought",
-      "content": "Adipisicing adipisicing nisi ut et qui nostrud.",
-      "date": [
-        "2020-08-18",
-      ],
+      "content": "Adipisicing adipisicing 2020-08-18 nisi ut et qui nostrud.",
       "isArchive": false
     },
     {
@@ -47,10 +39,7 @@ const initialState: NotesState = {
       "name": "Jimenez Solis",
       "createAt": "2018-09-18T08:44:24",
       "category": "Task",
-      "content": "In Lorem consequat excepteur consequat sint nisi.",
-      "date": [
-        "2019-10-04"
-      ],
+      "content": "In 2019-10-04 Lorem consequat excepteur consequat sint nisi.",
       "isArchive": false
     },
     {
@@ -58,11 +47,7 @@ const initialState: NotesState = {
       "name": "Cole Davenport",
       "createAt": "2015-01-12T05:42:23",
       "category": "Idea",
-      "content": "Proident Lorem in nulla nisi sunt veniam eiusmod fugiat enim sit.",
-      "date": [
-        "2017-04-07",
-        "2017-12-23"
-      ],
+      "content": "Proident Lorem 2017-04-07 in nulla nisi sunt veniam eiusmod fugiat enim 2017-12-23 sit.",
       "isArchive": false
     },
     {
@@ -70,12 +55,7 @@ const initialState: NotesState = {
       "name": "Petty House",
       "createAt": "2018-03-15T03:43:09",
       "category": "Idea",
-      "content": "Lorem veniam tempor consequat dolor proident mollit culpa dolor eiusmod eiusmod magna.",
-      "date": [
-        "2021-05-18",
-        "2015-10-22",
-        "2018-11-11"
-      ],
+      "content": "Lorem 2021-05-18 veniam tempor 2015-10-22 consequat dolor proident mollit 2018-11-11 culpa dolor eiusmod eiusmod magna.",
       "isArchive": false
     },
     {
@@ -83,11 +63,7 @@ const initialState: NotesState = {
       "name": "Winifred Holt",
       "createAt": "2014-04-10T03:54:01",
       "category": "Idea",
-      "content": "Occaecat quis dolor do culpa.",
-      "date": [
-        "2022-01-27",
-        "2022-07-24"
-      ],
+      "content": "Occaecat quis 2022-01-27 dolor do culpa 2022-07-24.",
       "isArchive": true
     },
     {
@@ -95,11 +71,7 @@ const initialState: NotesState = {
       "name": "Holloway Barrett",
       "createAt": "2022-05-16T03:56:04",
       "category": "Random Thought",
-      "content": "Officia deserunt enim sit id quis laborum ipsum dolor aute irure.",
-      "date": [
-        "2019-12-01",
-        "2018-03-11"
-      ],
+      "content": "Officia 2018-03-11 deserunt enim 2019-12-01 sit id quis laborum ipsum dolor aute irure.",
       "isArchive": false
     },
     {
@@ -107,11 +79,7 @@ const initialState: NotesState = {
       "name": "Cervantes Hardin",
       "createAt": "2014-02-07T10:14:14",
       "category": "Task",
-      "content": "Cillum elit ullamco aliqua ad labore sit qui incididunt est.",
-      "date": [
-        "2022-08-01"
-
-      ],
+      "content": "Cillum elit ullamco aliqua 2022-08-01 ad labore sit qui incididunt est.",
       "isArchive": true
     },
     {
@@ -119,10 +87,7 @@ const initialState: NotesState = {
       "name": "Vaughn Yates",
       "createAt": "2018-11-14T11:54:01",
       "category": "Task",
-      "content": "Labore cupidatat tempor est qui culpa nisi aute ad elit.",
-      "date": [
-        "2022-08-10"
-      ],
+      "content": "Labore cupidatat 2022-08-10 tempor est qui culpa nisi aute ad elit.",
       "isArchive": true
     },
     {
@@ -130,10 +95,7 @@ const initialState: NotesState = {
       "name": "Briana Diaz",
       "createAt": "2020-11-13T09:41:41",
       "category": "Idea",
-      "content": "Ad nisi in reprehenderit nisi minim enim in do qui mollit ea et ut.",
-      "date": [
-        "2017-02-08"
-      ],
+      "content": "Ad nisi in reprehenderit 2017-02-08 nisi minim enim in do qui mollit ea et ut.",
       "isArchive": true
     }
   ],

@@ -7,7 +7,6 @@ interface Note {
   createAt: string;
   category: string;
   content: string;
-  date: string[];
   isArchive: boolean;
 }
 
