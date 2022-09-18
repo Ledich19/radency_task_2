@@ -13,30 +13,29 @@ import ToggleArchiveBtn from './components/TogleArchiveBtn/ToggleArchiveBtn';
 
 function App() {
 
-  const notes = useAppSelector(state => state.notes.notes)
+  const showArchive = useAppSelector(state => state.notes.showArchive)
+  const notes = useAppSelector(state => state.notes.notes.filter((n) => n.isArchive === showArchive))
 
   return (
     <div className='App'>
       <header className='App-header'></header>
       <div className="App__container">
         <Table>
-          <TableMainHeader />
+          <TableMainHeader /> 
           {notes.map((n) => {
             return <TableMainRow key={n.id} note={n} />
           })}
         </Table>
+
+        <CreateNoteBtn />
+        <ToggleArchiveBtn />
+        <FormForNote />
 
         <Table>
           <TableInfoHeader />
           <TableInfoRows />
         </Table>
       </div>
-
-
-
-      <CreateNoteBtn />
-      <ToggleArchiveBtn />
-      <FormForNote />
     </div >
   );
 }

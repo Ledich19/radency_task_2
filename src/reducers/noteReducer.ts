@@ -150,8 +150,11 @@ const noteSlice = createSlice({
     },
     appendNote(state, action) {
       state
+    },
+    toggleArchive(state) {
+      return {...state, showArchive: !state.showArchive}
     }
 }})
 
-export const { setNotes } = noteSlice.actions
+export const { setNotes , toggleArchive} = noteSlice.actions
 export default noteSlice.reducer
