@@ -118,5 +118,5 @@ const noteSlice = createSlice({
     }
 }})
 
-export const { setNotes , toggleArchive} = noteSlice.actions
+export const { setNotes , toggleArchive } = noteSlice.actions
 export default noteSlice.reducer

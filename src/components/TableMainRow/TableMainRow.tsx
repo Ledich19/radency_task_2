@@ -1,3 +1,5 @@
+import { useAppDispatch } from '../../app/hooks';
+import { setUpdateNoteToForm, toggleShowNoteForm } from '../../reducers/formReducer';
 import './TableMainRow.scss'
 import TableMainRowForm from './TableMainRowForm'
 interface TableMainRowProps {
@@ -7,16 +9,16 @@ interface TableMainRowProps {
     category: string;
     content: string;
     id: string;
+    isArchive: boolean;
   };
 }
 
 const TableMainRow = ({ note }: TableMainRowProps) => {
   const regex = /(0?[1-9]|[12][0-9]|3[01])[/\-.](0?[1-9]|1[012])[/\-.]\d{4}|\d{4}[/\-.](0?[1-9]|[12][0-9]|3[01])[/\-.](0?[1-9]|1[012])/g
   const dates = note.content.match(regex)
-  console.log('dated',dates);
   const date = dates ? dates.join() : ''
   const lastDate = dates ? dates[dates.length - 1] : ''
-  
+  const dispatch = useAppDispatch()
   const createAt = new Date(note.createAt).toLocaleString('en-US', { year: 'numeric',month: 'short',day: 'numeric',})
 
   const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -25,7 +27,16 @@ const TableMainRow = ({ note }: TableMainRowProps) => {
   };
   const handleUpdate = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    console.log('handleUpdate',note.id);
+    const noteInfo = {
+      id: note.id,
+      name: note.name,
+      createAt: note.createAt,
+      category: note.category,
+      content: note.content,
+      isArchive: note.isArchive
+     }
+     dispatch(toggleShowNoteForm())
+     dispatch(setUpdateNoteToForm(noteInfo))
   };
   const handleArchive = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()

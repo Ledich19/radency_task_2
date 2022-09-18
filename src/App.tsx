@@ -2,7 +2,7 @@
 import './App.css';
 import { useAppSelector } from './app/hooks';
 import CreateNoteBtn from './components/CreateNoteBtn/CreateNoteBtn';
-import FormForNote from './components/FormForNote/FormForNote';
+import FormForNoteForm from './components/FormForNote/FormFormNote';
 import Table from './components/Table/Table';
 import TableInfoHeader from './components/TableInfoHeader/TableInfoHeader';
 import TableInfoRows from './components/TableInfoRows/TableInfoRows';
@@ -29,12 +29,15 @@ function App() {
 
         <CreateNoteBtn />
         <ToggleArchiveBtn />
-        <FormForNote />
+
 
         <Table>
           <TableInfoHeader />
           <TableInfoRows />
         </Table>
+
+<FormForNoteForm/>
+
       </div>
     </div >
   );
