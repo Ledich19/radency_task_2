@@ -16,7 +16,7 @@ interface TableMainRowProps {
   handleArchive: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const TableMainRowForm = ({lastDate, name, createAt, category, content, date, handleDelete,handleUpdate,handleArchive }: TableMainRowProps) => {
+const TableMainRowForm = ({lastDate, name, createAt, category, content, date, handleDelete,handleUpdate,handleArchive, id }: TableMainRowProps) => {
   
   return (
     <div className={`table-main__row row`} >
@@ -26,14 +26,17 @@ const TableMainRowForm = ({lastDate, name, createAt, category, content, date, ha
       <div className="table-main__content">{content}</div>
       <div title={lastDate} className="table-main__dates">{date}</div>
       <div className="table-main__buttons">
-        <button onClick = {handleDelete}
-          title='Update'
-          className="table-main__upd"><BiHighlight /></button>
-        <button onClick = {handleUpdate}
-          title='Archive'
-          className="table-main__arh"><BiArchiveIn /></button>
-        <button onClick =  {handleArchive}
-          title='Archive'
+        <button 
+        onClick = {handleUpdate}
+        title='Update'
+        className="table-main__upd"><BiHighlight /></button>
+        <button 
+        onClick =  {handleArchive}
+        title='Archive'
+        className="table-main__arh"><BiArchiveIn /></button>
+        <button 
+          onClick = {handleDelete}
+          title='Delete'
           className="table-main__del"><BiTrash /></button>
       </div>
     </div>

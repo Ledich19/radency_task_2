@@ -1,5 +1,7 @@
 import { useAppDispatch } from '../../app/hooks';
 import { setUpdateNoteToForm, toggleShowNoteForm } from '../../reducers/formReducer';
+import { deleteNote, updateNote } from '../../reducers/noteReducer';
+import notesServices from '../../services/noteServices';
 import './TableMainRow.scss'
 import TableMainRowForm from './TableMainRowForm'
 interface TableMainRowProps {
@@ -21,9 +23,20 @@ const TableMainRow = ({ note }: TableMainRowProps) => {
   const dispatch = useAppDispatch()
   const createAt = new Date(note.createAt).toLocaleString('en-US', { year: 'numeric',month: 'short',day: 'numeric',})
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDelete = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    console.log('handleDelete',note.id);
+    try {
+      await notesServices.deleteNote(note.id)
+      dispatch(deleteNote(note.id))
+      console.log('handleDelete',note.id);
+    }
+    catch (exception) {
+      //   dispatch(setNotifyMessage('Wrong credentials'))
+      //   setTimeout(() => {
+      //     dispatch(setNotifyMessage(null))
+      //   }, 5000)
+      // }
+    }
   };
   const handleUpdate = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
@@ -38,9 +51,23 @@ const TableMainRow = ({ note }: TableMainRowProps) => {
      dispatch(toggleShowNoteForm())
      dispatch(setUpdateNoteToForm(noteInfo))
   };
-  const handleArchive = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleArchive = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    console.log('handleArchive',note.id);
+    try {
+      const newNote = {
+        ...note , isArchive: !note.isArchive
+      }
+      const updatedNote = await notesServices.updateNote(newNote)
+      dispatch(updateNote(updatedNote))
+      console.log('handleArchive',note.id);
+    }
+    catch (exception) {
+      //   dispatch(setNotifyMessage('Wrong credentials'))
+      //   setTimeout(() => {
+      //     dispatch(setNotifyMessage(null))
+      //   }, 5000)
+      // }
+    }
   };
 
   return (
@@ -48,7 +75,7 @@ const TableMainRow = ({ note }: TableMainRowProps) => {
         handleDelete={handleDelete}
         handleUpdate={handleUpdate}
         handleArchive={handleArchive}
-        name='something'
+        name={note.name}
         createAt={createAt}
         category={note.category}
         content={note.content}
