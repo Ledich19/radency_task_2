@@ -12,25 +12,26 @@ import TableMainRow from './components/TableMainRow/TableMainRow';
 import ToggleArchiveBtn from './components/ToggleArchiveBtn/ToggleArchiveBtn';
 import { useEffect } from "react"
 import notesServices from './services/noteServices';
-import { initialNotes} from './reducers/noteReducer';
+import { initialNotes } from './reducers/noteReducer';
+import { removeNotify, setNotify } from './reducers/notifyReducer';
+import NotifyComponent from './components/NotifyComponent/NotifyComponent';
 
 function App() {
   const dispatch = useAppDispatch()
- 
+
 
   useEffect(() => {
     async function getNotes() {
       try {
         const notes = await notesServices.getAll()
         dispatch(initialNotes(notes))
-        console.log('true',notes);
+        console.log('true', notes);
       }
       catch (exception) {
-        //   dispatch(setNotifyMessage('Wrong credentials'))
-        //   setTimeout(() => {
-        //     dispatch(setNotifyMessage(null))
-        //   }, 5000)
-        // }
+        dispatch(setNotify(exception))
+        setTimeout(() => {
+          dispatch(removeNotify())
+        }, 5000)
       }
     }
     getNotes()
@@ -60,7 +61,7 @@ function App() {
         </Table>
 
         <FormForNoteForm />
-
+        <NotifyComponent className='' />
       </div>
     </div >
   );

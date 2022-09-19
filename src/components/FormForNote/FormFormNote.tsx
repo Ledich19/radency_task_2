@@ -4,6 +4,7 @@ import React, { useEffect } from "react"
 import './FormForNote.scss'
 import notesServices from '../../services/noteServices';
 import { appendNote, updateNote } from '../../reducers/noteReducer';
+import { removeNotify, setNotify } from '../../reducers/notifyReducer';
 interface FormProps {
   onSubmit: any;
   setTerm: any;
@@ -37,11 +38,10 @@ const FormForNoteForm = () => {
       console.log('appendNote(newNote)', newNote);
     }
     catch (exception) {
-      //   dispatch(setNotifyMessage('Wrong credentials'))
-      //   setTimeout(() => {
-      //     dispatch(setNotifyMessage(null))
-      //   }, 5000)
-      // }
+      dispatch(setNotify(exception))
+      setTimeout(() => {
+        dispatch(removeNotify())
+      }, 5000)
     }
   }
 
@@ -58,13 +58,13 @@ const FormForNoteForm = () => {
 
     }
     catch (exception) {
-      //   dispatch(setNotifyMessage('Wrong credentials'))
-      //   setTimeout(() => {
-      //     dispatch(setNotifyMessage(null))
-      //   }, 5000)
-      // }
+      dispatch(setNotify(exception))
+      setTimeout(() => {
+        dispatch(removeNotify())
+      }, 5000)
     }
   }
+
   // const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
   //   event.preventDefault();
   //   console.log('onSubmitForm')

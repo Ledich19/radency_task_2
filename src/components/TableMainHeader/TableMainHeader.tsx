@@ -5,6 +5,7 @@ import { BiArchiveOut } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import notesServices from "../../services/noteServices";
 import { initialNotes, updateNotesAll } from "../../reducers/noteReducer";
+import { removeNotify, setNotify } from "../../reducers/notifyReducer";
 
 const TableMainHeader = () => {
   const dispatch = useAppDispatch()
@@ -20,11 +21,10 @@ const TableMainHeader = () => {
      }
     }
     catch (exception) {
-      //   dispatch(setNotifyMessage('Wrong credentials'))
-      //   setTimeout(() => {
-      //     dispatch(setNotifyMessage(null))
-      //   }, 5000)
-      // }
+      dispatch(setNotify(exception))
+      setTimeout(() => {
+        dispatch(removeNotify())
+      }, 5000)
     }
   };
   const handleUpdateAll = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -38,11 +38,10 @@ const TableMainHeader = () => {
      }
     }
     catch (exception) {
-      //   dispatch(setNotifyMessage('Wrong credentials'))
-      //   setTimeout(() => {
-      //     dispatch(setNotifyMessage(null))
-      //   }, 5000)
-      // }
+      dispatch(setNotify(exception))
+      setTimeout(() => {
+        dispatch(removeNotify())
+      }, 5000)
     }
   };
 
