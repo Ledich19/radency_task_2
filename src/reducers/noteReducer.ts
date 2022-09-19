@@ -33,9 +33,14 @@ const noteSlice = createSlice({
       const notes = state.notes.filter((n)=> n.id !== action.payload)
       return {...state, notes: notes}
     },
+    updateNotesAll(state, action) {
+      const notes = state.notes.map((n) => {
+        return {...n, isArchive: !action.payload}
+    })
+    return {...state, notes: notes}
+    },
     updateNote(state, action) {
       console.log('action.payload.id ',action.payload.id );
-      console.log();
       const notes = state.notes.map((n) => n.id === action.payload.id ? action.payload : n)
       return {...state, notes: notes}
     },
@@ -47,5 +52,5 @@ const noteSlice = createSlice({
     }
 }})
 
-export const { initialNotes , toggleArchive,deleteNote, updateNote, appendNote } = noteSlice.actions
+export const { initialNotes , toggleArchive,deleteNote, updateNote, appendNote,updateNotesAll } = noteSlice.actions
 export default noteSlice.reducer

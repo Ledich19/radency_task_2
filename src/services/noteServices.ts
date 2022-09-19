@@ -108,14 +108,14 @@ const updateNote = (note: Note) => {
   return note
 }
 
-const deleteNoteAll = () => {
-  notes = []
-  return '204'
+const deleteNoteAll = (showArchive: boolean) => {
+  notes = notes.filter((n) => n.isArchive === !showArchive)
+  return notes
 }
-const updateAll = (param: []) => {
+const updateAll = (showArchive: boolean) => {
   notes = notes.map((n) => {
-    return { ...n, ...param }
-  })
+    return {...n, isArchive: !showArchive}
+})
   return notes
 }
 const addNote = (note: Note) => {

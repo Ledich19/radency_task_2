@@ -20,18 +20,20 @@ const FormForNoteForm = () => {
   }
   const handleSave = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
+    try {
     const note = {
       name: form.name,
       createAt: new Date().toString(),
-      category: form.category,
+      category: form.category ? form.category : 'Random Thought',
       content: form.content,
       isArchive: false,
       //! Тимчасово id генеруеться сервером
       id: `${new Date()}${form.content}`,
     }
-    try {
       const newNote = await notesServices.addNote(note)
       dispatch(appendNote(newNote))
+      dispatch(toggleShowNoteForm())
+      
       console.log('appendNote(newNote)', newNote);
     }
     catch (exception) {
@@ -49,9 +51,11 @@ const FormForNoteForm = () => {
       const note = {
         ...form
       }
-      const newNote = await notesServices.addNote(note)
+      const newNote = await notesServices.updateNote(note)
       dispatch(updateNote(newNote))
       console.log('notesServices.addNote', newNote)
+      dispatch(toggleShowNoteForm())
+
     }
     catch (exception) {
       //   dispatch(setNotifyMessage('Wrong credentials'))

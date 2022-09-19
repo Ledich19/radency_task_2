@@ -2,7 +2,8 @@
 import { BiTrash } from "react-icons/bi";
 import { BiArchiveIn } from "react-icons/bi";
 import { BiHighlight } from "react-icons/bi";
-
+import { BiArchiveOut } from "react-icons/bi";
+import { useAppSelector } from "../../app/hooks";
 interface TableMainRowProps {
   name: string;
   createAt: string;
@@ -17,7 +18,8 @@ interface TableMainRowProps {
 }
 
 const TableMainRowForm = ({lastDate, name, createAt, category, content, date, handleDelete,handleUpdate,handleArchive, id }: TableMainRowProps) => {
-  
+  const showArchive = useAppSelector(state => state.notes.showArchive)
+
   return (
     <div className={`table-main__row row`} >
       <div className="table-main__name">{name}</div>
@@ -33,7 +35,7 @@ const TableMainRowForm = ({lastDate, name, createAt, category, content, date, ha
         <button 
         onClick =  {handleArchive}
         title='Archive'
-        className="table-main__arh"><BiArchiveIn /></button>
+        className="table-main__arh">{ showArchive ? <BiArchiveOut/> : <BiArchiveIn />}</button>
         <button 
           onClick = {handleDelete}
           title='Delete'

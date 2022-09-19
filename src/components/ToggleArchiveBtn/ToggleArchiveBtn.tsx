@@ -15,7 +15,7 @@ const ToggleArchiveBtn = () => {
 
   return (
     <Button 
-    name={showArchive ? 'Show archive' : 'Show notes'} 
+    name={showArchive ? 'Show notes' : 'Show archive'} 
     className='toggle-archive-btn' 
     onClick ={ ToggleArchiveHandler } />
   )
