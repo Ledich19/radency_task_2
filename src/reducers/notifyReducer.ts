@@ -1,10 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import { notifyState } from '../app/types'
 
-interface notifyState {
-  type: string,
-  text: string,
-}
-// Define the initial state using that type
 const initialState: notifyState = {
   type: '',
   text: '',

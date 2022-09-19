@@ -1,16 +1,11 @@
 
-import { BiTrash } from "react-icons/bi";
-import { BiArchiveIn } from "react-icons/bi";
-import { BiHighlight } from "react-icons/bi";
-
 interface ButtonProps {
   name: string;
   className: string;
-  onClick: any;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button  = ({ name, className, onClick}: ButtonProps) => {
-
   return (
     <button 
     onClick={onClick} 

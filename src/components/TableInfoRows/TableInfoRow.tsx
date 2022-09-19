@@ -1,10 +1,6 @@
 import './TableInfoRow.scss'
+import {TableInfoRowProps} from '../../app/types'
 
-interface TableInfoRowProps {
-  category: string;
-  all: number;
-  archive: number;
-}
 
 const TableInfoRowForm = ({ category, all, archive }: TableInfoRowProps) => {
   return (

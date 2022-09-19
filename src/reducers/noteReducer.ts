@@ -1,21 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../app/store'
+import { createSlice } from '@reduxjs/toolkit'
+import { NotesState } from '../app/types'
 
-interface Note {
-  id: string;
-  name: string;
-  createAt: string;
-  category: string;
-  content: string;
-  isArchive: boolean;
- }
-// Define a type for the slice state
-interface NotesState {
-  notes: Note[],
-  showArchive: boolean,
-  err: null | boolean
-}
-// Define the initial state using that type
 const initialState: NotesState = {
   notes: [],
   showArchive: false,
@@ -27,30 +12,30 @@ const noteSlice = createSlice({
   initialState,
   reducers: {
     initialNotes(state, action) {
-      return {...state, notes: action.payload}
+      return { ...state, notes: action.payload }
     },
     deleteNote(state, action) {
-      const notes = state.notes.filter((n)=> n.id !== action.payload)
-      return {...state, notes: notes}
+      const notes = state.notes.filter((n) => n.id !== action.payload)
+      return { ...state, notes: notes }
     },
     updateNotesAll(state, action) {
       const notes = state.notes.map((n) => {
-        return {...n, isArchive: !action.payload}
-    })
-    return {...state, notes: notes}
+        return { ...n, isArchive: !action.payload }
+      })
+      return { ...state, notes: notes }
     },
     updateNote(state, action) {
-
       const notes = state.notes.map((n) => n.id === action.payload.id ? action.payload : n)
-      return {...state, notes: notes}
+      return { ...state, notes: notes }
     },
     appendNote(state, action) {
-      return {...state, notes: state.notes.concat(action.payload)}
+      return { ...state, notes: state.notes.concat(action.payload) }
     },
     toggleArchive(state) {
-      return {...state, showArchive: !state.showArchive}
+      return { ...state, showArchive: !state.showArchive }
     }
-}})
+  }
+})
 
-export const { initialNotes , toggleArchive,deleteNote, updateNote, appendNote,updateNotesAll } = noteSlice.actions
+export const { initialNotes, toggleArchive, deleteNote, updateNote, appendNote, updateNotesAll } = noteSlice.actions
 export default noteSlice.reducer

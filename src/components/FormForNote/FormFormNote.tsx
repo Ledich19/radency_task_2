@@ -5,10 +5,6 @@ import './FormForNote.scss'
 import notesServices from '../../services/noteServices';
 import { appendNote, updateNote } from '../../reducers/noteReducer';
 import { removeNotify, setNotify } from '../../reducers/notifyReducer';
-interface FormProps {
-  onSubmit: any;
-  setTerm: any;
-}
 
 const FormForNoteForm = () => {
   const { form, isUpdate, isOpen } = useAppSelector(state => state.notesForm)
@@ -19,7 +15,20 @@ const FormForNoteForm = () => {
     event.preventDefault();
     dispatch(toggleShowNoteForm())
   }
+
   const handleSave = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (!form.content || !form.name) {
+      dispatch(setNotify({text: 'name and content and content must contain text',type: 'error'}))
+      setTimeout(() => {
+        dispatch(removeNotify())
+      }, 5000)
+    } else if (form.name.length < 3) {
+      dispatch(setNotify({type: 'error' ,text: 'name must be more than 3  letters'}))
+      setTimeout(() => {
+        dispatch(removeNotify())
+      }, 5000)
+    }
+    else {
     event.preventDefault()
     try {
     const note = {
@@ -41,7 +50,7 @@ const FormForNoteForm = () => {
       setTimeout(() => {
         dispatch(removeNotify())
       }, 5000)
-    }
+    }}
   }
 
   const handleUpdate = async (event: React.MouseEvent<HTMLButtonElement>) => {

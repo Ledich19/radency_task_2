@@ -6,7 +6,6 @@ import FormForNoteForm from './components/FormForNote/FormFormNote';
 import Table from './components/Table/Table';
 import TableInfoHeader from './components/TableInfoHeader/TableInfoHeader';
 import TableInfoRows from './components/TableInfoRows/TableInfoRows';
-
 import TableMainHeader from './components/TableMainHeader/TableMainHeader';
 import TableMainRow from './components/TableMainRow/TableMainRow';
 import ToggleArchiveBtn from './components/ToggleArchiveBtn/ToggleArchiveBtn';
@@ -18,7 +17,6 @@ import NotifyComponent from './components/NotifyComponent/NotifyComponent';
 
 function App() {
   const dispatch = useAppDispatch()
-
 
   useEffect(() => {
     async function getNotes() {

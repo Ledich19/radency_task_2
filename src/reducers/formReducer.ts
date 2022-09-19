@@ -1,17 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { notesFormState } from '../app/types'
 
-interface notesFormState {
-  form: {
-    id: string;
-    name: string;
-    createAt: string;
-    category: string;
-    content: string;
-    isArchive: boolean;
-  }
-  isOpen: boolean;
-  isUpdate: boolean;
-}
 // Define the initial state using that type
 const initialState: notesFormState = {
   form: {

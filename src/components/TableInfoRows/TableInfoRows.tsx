@@ -1,14 +1,7 @@
 import { useAppSelector } from '../../app/hooks'
 import TableInfoRowForm from './TableInfoRow'
-
-interface Note {
-  id: string;
-  name: string;
-  createAt: string;
-  category: string;
-  content: string;
-  isArchive: boolean;
-}
+import { Note } from '../../app/types'
+import {TableInfoRowProps} from '../../app/types'
 
 const TableInfoRow = () => {
   const notes = useAppSelector(state => state.notes.notes)
@@ -36,7 +29,7 @@ const TableInfoRow = () => {
     }
     return result
   }
-  const dataNotes: any[] = countNotes(notes)
+  const dataNotes: TableInfoRowProps[] = countNotes(notes)
 
   return (
     <>

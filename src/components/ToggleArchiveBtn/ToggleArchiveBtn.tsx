@@ -10,7 +10,6 @@ const ToggleArchiveBtn = () => {
   const ToggleArchiveHandler = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     dispatch(toggleArchive())
-
   };
 
   return (
