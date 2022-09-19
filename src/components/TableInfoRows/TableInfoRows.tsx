@@ -36,8 +36,6 @@ const TableInfoRow = () => {
     }
     return result
   }
-  console.log('dsd', countNotes(notes));
-
   const dataNotes: any[] = countNotes(notes)
 
   return (

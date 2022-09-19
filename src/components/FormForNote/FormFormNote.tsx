@@ -34,11 +34,10 @@ const FormForNoteForm = () => {
       const newNote = await notesServices.addNote(note)
       dispatch(appendNote(newNote))
       dispatch(toggleShowNoteForm())
-      
-      console.log('appendNote(newNote)', newNote);
+ 
     }
     catch (exception) {
-      dispatch(setNotify(exception))
+      dispatch(setNotify({text: exception,type: 'error'}))
       setTimeout(() => {
         dispatch(removeNotify())
       }, 5000)
@@ -53,22 +52,17 @@ const FormForNoteForm = () => {
       }
       const newNote = await notesServices.updateNote(note)
       dispatch(updateNote(newNote))
-      console.log('notesServices.addNote', newNote)
+  
       dispatch(toggleShowNoteForm())
 
     }
     catch (exception) {
-      dispatch(setNotify(exception))
+      dispatch(setNotify({text: exception,type: 'error'}))
       setTimeout(() => {
         dispatch(removeNotify())
       }, 5000)
     }
   }
-
-  // const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   console.log('onSubmitForm')
-  // }
 
   return (
     <div style={visibleForm} className='form-wrapper hide'  >

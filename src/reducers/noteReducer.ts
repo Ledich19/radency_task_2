@@ -40,7 +40,7 @@ const noteSlice = createSlice({
     return {...state, notes: notes}
     },
     updateNote(state, action) {
-      console.log('action.payload.id ',action.payload.id );
+
       const notes = state.notes.map((n) => n.id === action.payload.id ? action.payload : n)
       return {...state, notes: notes}
     },

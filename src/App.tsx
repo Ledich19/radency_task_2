@@ -25,10 +25,9 @@ function App() {
       try {
         const notes = await notesServices.getAll()
         dispatch(initialNotes(notes))
-        console.log('true', notes);
       }
       catch (exception) {
-        dispatch(setNotify(exception))
+        dispatch(setNotify({text: exception,type: 'error'}))
         setTimeout(() => {
           dispatch(removeNotify())
         }, 5000)

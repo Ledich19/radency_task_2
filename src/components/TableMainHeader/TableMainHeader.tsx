@@ -21,7 +21,7 @@ const TableMainHeader = () => {
      }
     }
     catch (exception) {
-      dispatch(setNotify(exception))
+      dispatch(setNotify({text: exception,type: 'error'}))
       setTimeout(() => {
         dispatch(removeNotify())
       }, 5000)
@@ -38,7 +38,7 @@ const TableMainHeader = () => {
      }
     }
     catch (exception) {
-      dispatch(setNotify(exception))
+      dispatch(setNotify({text: exception,type: 'error'}))
       setTimeout(() => {
         dispatch(removeNotify())
       }, 5000)

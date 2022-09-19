@@ -31,11 +31,11 @@ const TableMainRow = ({ note }: TableMainRowProps) => {
       if (ask) {
         await notesServices.deleteNote(note.id)
         dispatch(deleteNote(note.id))
-        console.log('handleDelete', note.id);
+
       }
     }
     catch (exception) {
-      dispatch(setNotify(exception))
+      dispatch(setNotify({text: exception,type: 'error'}))
       setTimeout(() => {
         dispatch(removeNotify())
       }, 5000)
@@ -63,10 +63,10 @@ const TableMainRow = ({ note }: TableMainRowProps) => {
       }
       const updatedNote = await notesServices.updateNote(newNote)
       dispatch(updateNote(updatedNote))
-      console.log('handleArchive', note.id);
+
     }
     catch (exception) {
-      dispatch(setNotify(exception))
+      dispatch(setNotify({text: exception,type: 'error'}))
       setTimeout(() => {
         dispatch(removeNotify())
       }, 5000)
