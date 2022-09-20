@@ -1,5 +1,5 @@
-import { useAppSelector } from '../../app/hooks';
-import TableMainRow from './TableMainRow/TableMainRow';
+import { useAppSelector } from '../../app/hooks'
+import TableMainRow from './TableMainRow/TableMainRow'
 
 const TableMainBody = () => {
   const showArchive = useAppSelector(state => state.notes.showArchive)

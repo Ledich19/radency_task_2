@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { toggleArchive } from '../../reducers/noteReducer';
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { toggleArchive } from '../../reducers/noteReducer'
 import Button from '../Button'
 import './ToggleArchiveBtn.scss'
 
@@ -10,7 +10,7 @@ const ToggleArchiveBtn = () => {
   const ToggleArchiveHandler = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     dispatch(toggleArchive())
-  };
+  }
 
   return (
     <Button 

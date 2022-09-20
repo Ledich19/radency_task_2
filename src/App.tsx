@@ -1,23 +1,22 @@
 import './App.css';
-import { useAppDispatch, useAppSelector } from './app/hooks';
+import { useEffect } from "react"
+import { useAppDispatch } from './app/hooks';
+import { initialNotes } from './reducers/noteReducer';
+import notesServices from './services/noteServices';
+import useSetNotify from './hooks/useSetNotify';
 import CreateNoteBtn from './components/CreateNoteBtn/CreateNoteBtn';
 import FormForNoteForm from './components/FormForNote/FormFormNote';
-import Table from './components/Table/Table';
+import ToggleArchiveBtn from './components/ToggleArchiveBtn/ToggleArchiveBtn';
 import TableInfoHeader from './components/TableInfoHeader/TableInfoHeader';
 import TableMainHeader from './components/TableMainHeader/TableMainHeader';
-import ToggleArchiveBtn from './components/ToggleArchiveBtn/ToggleArchiveBtn';
-import { useEffect } from "react"
-import notesServices from './services/noteServices';
-import { initialNotes } from './reducers/noteReducer';
-import { removeNotify, setNotify } from './reducers/notifyReducer';
+import Table from './components/Table/Table';
 import NotifyComponent from './components/NotifyComponent/NotifyComponent';
-
 import TableInfoBody from './components/TableInfoBody/TableInfoBody';
 import TableMainBody from './components/TableMainBody/TableMainRowBody ';
 
 function App() {
   const dispatch = useAppDispatch()
-
+  const notify = useSetNotify()
   useEffect(() => {
     async function getNotes() {
       try {
@@ -25,17 +24,11 @@ function App() {
         dispatch(initialNotes(notes))
       }
       catch (exception) {
-        dispatch(setNotify({text: exception,type: 'error'}))
-        setTimeout(() => {
-          dispatch(removeNotify())
-        }, 5000)
+        notify({text: exception,type: 'error'})
       }
     }
     getNotes()
   }, [])
-
-  const showArchive = useAppSelector(state => state.notes.showArchive)
-  const notes = useAppSelector(state => state.notes.notes.filter((n) => n.isArchive === showArchive))
 
   return (
     <div className='App'>

@@ -5,26 +5,23 @@ import { BiArchiveOut } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import notesServices from "../../services/noteServices";
 import { initialNotes, updateNotesAll } from "../../reducers/noteReducer";
-import { removeNotify, setNotify } from "../../reducers/notifyReducer";
+import useSetNotify from "../../hooks/useSetNotify";
 
 const TableMainHeader = () => {
   const dispatch = useAppDispatch()
+  const notify = useSetNotify()
   const showArchive = useAppSelector(state => state.notes.showArchive)
   const handleDeleteAll = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     try {
       const ask = confirm('Do you want to delete everything ?')
        if (ask) {
-      // якшо показуеться архів видаляеться архів якщо ні то нотатки
       const notesInDb = await notesServices.deleteNoteAll(showArchive)
       dispatch(initialNotes(notesInDb))
      }
     }
     catch (exception) {
-      dispatch(setNotify({text: exception,type: 'error'}))
-      setTimeout(() => {
-        dispatch(removeNotify())
-      }, 5000)
+      notify({text: exception,type: 'error'})
     }
   };
   const handleUpdateAll = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,19 +29,14 @@ const TableMainHeader = () => {
     try {
       const ask = confirm(`Do you want ${showArchive ? 'extract all notes of a note?' : 'archive all notes?'}`)
        if (ask) {
-      // якшо показуеться архів видаляеться архів якщо ні то нотатки
       await notesServices.updateAll(showArchive)
       dispatch(updateNotesAll(showArchive))
      }
     }
     catch (exception) {
-      dispatch(setNotify({text: exception,type: 'error'}))
-      setTimeout(() => {
-        dispatch(removeNotify())
-      }, 5000)
+      notify({text: exception,type: 'error'})
     }
   };
-
 
   return (
     <div className="table-head row">

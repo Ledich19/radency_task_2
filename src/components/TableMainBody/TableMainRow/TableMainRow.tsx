@@ -1,11 +1,11 @@
 import { useAppDispatch } from '../../../app/hooks';
 import { setUpdateNoteToForm, toggleShowNoteForm } from '../../../reducers/formReducer';
 import { deleteNote, updateNote } from '../../../reducers/noteReducer';
-import { removeNotify, setNotify } from '../../../reducers/notifyReducer';
 import notesServices from '../../../services/noteServices';
 import './TableMainRow.scss'
 import TableMainRowForm from './TableMainRowForm'
 import { Note } from '../../../app/types'
+import useSetNotify from '../../../hooks/useSetNotify';
 
 const TableMainRow = ({ note }:{note: Note } ) => {
   const regex = /(0?[1-9]|[12][0-9]|3[01])[/\-.](0?[1-9]|1[012])[/\-.]\d{4}|\d{4}[/\-.](0?[1-9]|1[012])[/\-.](3[01]|[12][0-9]|0?[1-9])/g
@@ -13,6 +13,7 @@ const TableMainRow = ({ note }:{note: Note } ) => {
   const date = dates ? dates.join() : ''
   const lastDate = dates ? dates[dates.length - 1] : ''
   const dispatch = useAppDispatch()
+  const notify = useSetNotify()
   const createAt = new Date(note.createAt).toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', })
 
   const handleDelete = async (event: React.MouseEvent<HTMLButtonElement>, id: string) => {
@@ -25,10 +26,7 @@ const TableMainRow = ({ note }:{note: Note } ) => {
       }
     }
     catch (exception) {
-      dispatch(setNotify({text: exception,type: 'error'}))
-      setTimeout(() => {
-        dispatch(removeNotify())
-      }, 5000)
+      notify({text: exception,type: 'error'})
     }
   };
   const handleUpdate = (event: React.MouseEvent<HTMLButtonElement>, note: Note) => {
@@ -54,10 +52,7 @@ const TableMainRow = ({ note }:{note: Note } ) => {
       dispatch(updateNote(updatedNote))
     }
     catch (exception) {
-      dispatch(setNotify({text: exception,type: 'error'}))
-      setTimeout(() => {
-        dispatch(removeNotify())
-      }, 5000)
+      notify({text: exception,type: 'error'})
     }
   };
 

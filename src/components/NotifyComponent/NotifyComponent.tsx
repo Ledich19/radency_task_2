@@ -1,9 +1,7 @@
 import './NotifyComponent.scss'
 import { FaExclamationTriangle, FaCheckCircle, FaInfoCircle } from 'react-icons/fa'
-import { useAppSelector } from '../../app/hooks';
-import { Notify } from '../../app/types';
-
-
+import { useAppSelector } from '../../app/hooks'
+import { Notify } from '../../app/types'
 
 const NotifyComponent   = ({ className }: Notify) => {
   const notifyMessage = useAppSelector(state => state.notify)

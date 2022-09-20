@@ -1,4 +1,3 @@
-
 interface ButtonProps {
   name: string;
   className: string;
