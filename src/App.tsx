@@ -1,19 +1,19 @@
-
 import './App.css';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import CreateNoteBtn from './components/CreateNoteBtn/CreateNoteBtn';
 import FormForNoteForm from './components/FormForNote/FormFormNote';
 import Table from './components/Table/Table';
 import TableInfoHeader from './components/TableInfoHeader/TableInfoHeader';
-import TableInfoRows from './components/TableInfoRows/TableInfoRows';
 import TableMainHeader from './components/TableMainHeader/TableMainHeader';
-import TableMainRow from './components/TableMainRow/TableMainRow';
 import ToggleArchiveBtn from './components/ToggleArchiveBtn/ToggleArchiveBtn';
 import { useEffect } from "react"
 import notesServices from './services/noteServices';
 import { initialNotes } from './reducers/noteReducer';
 import { removeNotify, setNotify } from './reducers/notifyReducer';
 import NotifyComponent from './components/NotifyComponent/NotifyComponent';
+
+import TableInfoBody from './components/TableInfoBody/TableInfoBody';
+import TableMainBody from './components/TableMainBody/TableMainRowBody ';
 
 function App() {
   const dispatch = useAppDispatch()
@@ -43,18 +43,15 @@ function App() {
       <div className="App__container">
         <Table>
           <TableMainHeader />
-          {notes.map((n) => {
-            return <TableMainRow key={n.id} note={n} />
-          })}
+          <TableMainBody/>
         </Table>
 
         <CreateNoteBtn />
         <ToggleArchiveBtn />
 
-
         <Table>
           <TableInfoHeader />
-          <TableInfoRows />
+          <TableInfoBody />
         </Table>
 
         <FormForNoteForm />

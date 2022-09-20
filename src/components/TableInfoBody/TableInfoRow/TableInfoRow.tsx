@@ -1,8 +1,8 @@
 import './TableInfoRow.scss'
-import {TableInfoRowProps} from '../../app/types'
+import {TableInfoRowProps} from '../../../app/types'
 
 
-const TableInfoRowForm = ({ category, all, archive }: TableInfoRowProps) => {
+const TableInfoRow = ({ category, all, archive }: TableInfoRowProps) => {
   return (
     <div className='table-info__row row' >
       <div className="able-info__category">{category}</div>
@@ -12,4 +12,4 @@ const TableInfoRowForm = ({ category, all, archive }: TableInfoRowProps) => {
   )
 }
 
-export default TableInfoRowForm
+export default TableInfoRow

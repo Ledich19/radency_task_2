@@ -1,9 +1,10 @@
 import { useAppSelector } from '../../app/hooks'
-import TableInfoRowForm from './TableInfoRow'
+
 import { Note } from '../../app/types'
 import {TableInfoRowProps} from '../../app/types'
+import TableInfoRow from './TableInfoRow/TableInfoRow'
 
-const TableInfoRow = () => {
+const TableInfoBody = () => {
   const notes = useAppSelector(state => state.notes.notes)
   const countNotes = (showCategories: Note[]) => {
     let result: any[] = [];
@@ -35,11 +36,11 @@ const TableInfoRow = () => {
     <>
       {
         dataNotes.map((d) => {
-          return <TableInfoRowForm key={d.category} category={d.category} all={d.all} archive={d.archive} />
+          return <TableInfoRow key={d.category} category={d.category} all={d.all} archive={d.archive} />
         })
       }
     </>
   )
 }
 
-export default TableInfoRow
+export default TableInfoBody

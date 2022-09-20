@@ -3,8 +3,9 @@ import { BiTrash } from "react-icons/bi";
 import { BiArchiveIn } from "react-icons/bi";
 import { BiHighlight } from "react-icons/bi";
 import { BiArchiveOut } from "react-icons/bi";
-import { useAppSelector } from "../../app/hooks";
-import { TableMainRowProps } from '../../app/types'
+import { useAppSelector } from "../../../app/hooks";
+import { TableMainRowProps } from '../../../app/types'
+import CategoryIcon from "../CategoryIcon/CategoryIcon";
 
 const TableMainRowForm = (props: TableMainRowProps) => {
   const {
@@ -29,6 +30,7 @@ const TableMainRowForm = (props: TableMainRowProps) => {
   }
   return (
     <div className={`table-main__row row`} >
+      <CategoryIcon className='table-main__icon' category={category} />
       <div className="table-main__name">{name}</div>
       <div className="table-main__created">{createAt}</div>
       <div className="table-main__category">{category}</div>

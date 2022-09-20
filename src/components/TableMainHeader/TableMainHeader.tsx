@@ -48,6 +48,7 @@ const TableMainHeader = () => {
 
   return (
     <div className="table-head row">
+      <div className='table-head__icon'></div>
       <div className="table-head__name">Name</div>
       <div className="table-head__created">Created</div>
       <div className="table-head__category">Category</div>

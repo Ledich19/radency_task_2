@@ -1,11 +1,11 @@
-import { useAppDispatch } from '../../app/hooks';
-import { setUpdateNoteToForm, toggleShowNoteForm } from '../../reducers/formReducer';
-import { deleteNote, updateNote } from '../../reducers/noteReducer';
-import { removeNotify, setNotify } from '../../reducers/notifyReducer';
-import notesServices from '../../services/noteServices';
+import { useAppDispatch } from '../../../app/hooks';
+import { setUpdateNoteToForm, toggleShowNoteForm } from '../../../reducers/formReducer';
+import { deleteNote, updateNote } from '../../../reducers/noteReducer';
+import { removeNotify, setNotify } from '../../../reducers/notifyReducer';
+import notesServices from '../../../services/noteServices';
 import './TableMainRow.scss'
 import TableMainRowForm from './TableMainRowForm'
-import { Note } from '../../app/types'
+import { Note } from '../../../app/types'
 
 const TableMainRow = ({ note }:{note: Note } ) => {
   const regex = /(0?[1-9]|[12][0-9]|3[01])[/\-.](0?[1-9]|1[012])[/\-.]\d{4}|\d{4}[/\-.](0?[1-9]|1[012])[/\-.](3[01]|[12][0-9]|0?[1-9])/g
