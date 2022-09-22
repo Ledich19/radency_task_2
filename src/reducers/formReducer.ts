@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { notesFormState } from '../app/types'
 
-// Define the initial state using that type
 const initialState: notesFormState = {
   form: {
     id: '',

@@ -31,7 +31,6 @@ const FormForNoteForm = () => {
           category: form.category ? form.category : 'Random Thought',
           content: form.content,
           isArchive: false,
-          //! Тимчасово id генеруеться сервером
           id: `${new Date()}${form.content}`,
         }
         const newNote = await notesServices.addNote(note)

@@ -81,8 +81,6 @@ let notes = [
     "isArchive": true
   }
 ]
-// Імітація діяльності сервера
-
 interface Note {
   id: string;
   name: string;
